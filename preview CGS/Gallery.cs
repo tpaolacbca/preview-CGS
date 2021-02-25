@@ -16,16 +16,18 @@ namespace preview_CGS
         List<Curator> listcurators = new List<Curator>();
         List<ArtPiece> listpieces = new List<ArtPiece>();
 
-        public void AddArtist(string pArtistID, string pFirstName, string pLastName)
+        public void AddArtist(string pFirstName, string pLastName, string pArtistID)
         {
-            Artist art = new Artist();
+            Artist art = new Artist(pFirstName, pLastName, pArtistID);
 
-            art.SetArtistID(pArtistID);
-            art.SetFirstName(pFirstName);
-            art.SetLastName(pLastName);
+            // art.SetArtistID(pArtistID);
+            // art.SetFirstName(pFirstName);
+            // art.SetLastName(pLastName);
+            // this.atribArtists = art; senao fosse lista
+
 
             listartists.Add(art);
-            this.atribArtists = art;
+            
 
         }
 
@@ -57,26 +59,15 @@ namespace preview_CGS
             this.atribPieces = artpiece;
         }
 
-        public void ListArtists()
+        public List<Artist> ListArtists()
         {
-            foreach (Artist Artist in listartists)
-            {
-                Console.WriteLine(Artist.GetArtistID() + 
-                                  Artist.GetFirstName() + 
-                                  Artist.GetLastName());
-            }
+            return listartists;
         }
        
-       
 
-        public void ListCurators()
+        public List<Curator> ListCurators()
         {
-            foreach (Curator Curator in listcurators)
-            {
-                Console.WriteLine(Curator.GetCuratorID() + 
-                                  Curator.GetFirstName() + 
-                                  Curator.GetLastName());
-            }
+            return listcurators;
         }
         
         public void ListPieces()

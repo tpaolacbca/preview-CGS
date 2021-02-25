@@ -6,6 +6,18 @@ namespace preview_CGS
     {
         private string ArtistID;
 
+        // construtor padrao
+        public Artist()
+        {
+
+        }
+        public Artist (string pFirstName, string pLastName, string pArtistID)
+        {
+            this.SetFirstName(pFirstName);
+            this.SetLastName(pLastName);
+            this.SetArtistID(pArtistID);
+        }
+
         public void SetArtistID(string pArtistId)
         {
             this.ArtistID = pArtistId;

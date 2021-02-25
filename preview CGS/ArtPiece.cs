@@ -11,7 +11,7 @@ namespace preview_CGS
 
         private double Price = 0;
 
-        private double Estimate;
+        private double Estimate = 0;
 
         private string ArtistId;
 
