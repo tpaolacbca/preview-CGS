@@ -1,58 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-
-namespace preview_CGS
+namespace CGS
 {
-    class Gallery
+    public class Gallery
     {
-        //public Artist atribArtists;
-
-        //public Curator atribCurators;
-
-        //public ArtPiece atribPieces;
-
         List<Artist> listartists = new List<Artist>();
         List<Curator> listcurators = new List<Curator>();
         List<ArtPiece> listpieces = new List<ArtPiece>();
 
+        // Step 1 - item 3 / a - b
         public void AddArtist(string pFirstName, string pLastName, string pArtistID)
         {
-            // art.SetArtistID(pArtistID);
-            // art.SetFirstName(pFirstName);
-            // art.SetLastName(pLastName);
-            // this.atribArtists = art; caso nao fosse lista
-
             Artist art = new Artist(pFirstName, pLastName, pArtistID);
 
             listartists.Add(art);
         }
 
-        public void AddCurator(string pFirstName, string pLastName, string pCuratorID, double pComm)
+        // Step 3 - item 2 / a - b
+        public void AddCurator(string pFirstName, string pLastName, string pCuratorID)
         {
-            Curator cur = new Curator(pFirstName, pLastName, pCuratorID, pComm);
+            Curator cur = new Curator(pFirstName, pLastName, pCuratorID);
 
             cur.SetCuratorID(pCuratorID);
             cur.SetFirstName(pFirstName);
             cur.SetLastName(pLastName);
-            cur.SetCommission(pComm);
 
+            // Step 3 - item 2 / c
             listcurators.Add(cur);
         }
 
-        public void AddPiece(string pPieceID, string pTitle, string pYear, double pPrice, string pArtistID, string pCuratorID)
+        // Step 4 - item 2 / a, b , c
+        public void AddPiece(string pPieceID, string pTitle, string pYear, string pArtistID, string pCuratorID)
         {
-            ArtPiece artpiece = new ArtPiece(pPieceID, pTitle, pYear, pPrice, pArtistID, pCuratorID);
+            ArtPiece artpiece = new ArtPiece(pPieceID, pTitle, pYear, pArtistID, pCuratorID);
 
             artpiece.SetPieceID(pPieceID);
             artpiece.SetTitle(pTitle);
             artpiece.SetYear(pYear);
-            artpiece.SetPrice(pPrice);
+            artpiece.SetPrice(0);
+            artpiece.SetStatus('D');
             artpiece.SetArtistID(pArtistID);
             artpiece.SetCuratorID(pCuratorID);
 
-            listpieces.Add(artpiece);
-            
+            listpieces.Add(artpiece);       
         }
 
         public List<Artist> ListArtists()
@@ -73,9 +65,11 @@ namespace preview_CGS
 
         public Boolean SellPiece (string pPieceID, double pPrice)
         {
-            return true;
+            var lista = this.listpieces.Where(a => a.GetPieceID()==pPieceID);
+
+            ArtPiece artPiece = lista.FirstOrDefault();
+            
+            return artPiece.GetStatus() == 'D' ? true : false;
         }
-
-
     }
 }

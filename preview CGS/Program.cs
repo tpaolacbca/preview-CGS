@@ -26,7 +26,7 @@ namespace preview_CGS
 
             gallery.AddPiece("12", "MonaLisa", "2021",0, "1", "a");
 
-            gallery.AddCurator("Joao", "da Silva", "a");
+            //gallery.AddCurator("Joao", "da Silva", "a");
 
             foreach (var item in gallery.ListArtists())
             {

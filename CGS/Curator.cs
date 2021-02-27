@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace preview_CGS
+namespace CGS
 {
-    class Curator : Person
+   // Step 3 - item 1 - a
+    public class Curator : Person
     {
         private string CuratorID;
 
@@ -11,46 +12,39 @@ namespace preview_CGS
         public const double CommRate = 0.1;
 
 
-        public Curator (string pFirstName, string pLastName, string pCuratorID, double pComm)
+        // Step 3 - item 1 - b
+        public Curator (string pFirstName, string pLastName, string pCuratorID)
         {
             this.SetFirstName(pFirstName);
             this.SetLastName(pLastName);
             this.SetCuratorID(pCuratorID);
-            this.SetCommission(pComm);
+            this.SetComm(0);
         }
 
 
         public void SetCuratorID (string pCurator)
         {
             this.CuratorID = pCurator; 
-        }
-
-        public string GetCuratorID()
-        {
-            return this.CuratorID;
-        }
+        }        
 
         public string GetID()
         {
             return CuratorID;
         }
-        public void SetCommission(double pCommission)
-        {
-            this.Comission = pCommission;
-        }
 
         public void SetComm(double pComm)
         {
-            this.Comission = pComm;
+            this.Comission = pComm * CommRate;
         }
 
         public double GetCommission()
         {
             return this.Comission;
         }
+        // Step 3 - item 1 - c
         public override string ToString()
         {
-            return GetFirstName() + GetLastName() + CuratorID + Comission;
+            return string.Format($"{GetFirstName()} {GetLastName()} - {GetID()} - R$ {GetCommission()}");           
         }
 
         public void OnChangeCommission(EventArgs e)

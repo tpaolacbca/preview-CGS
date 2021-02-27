@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "preview CGS", "preview CGS\preview CGS.csproj", "{44255A21-CF3F-404C-A3A9-6A4A0EE77476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "preview CGS", "preview CGS\preview CGS.csproj", "{44255A21-CF3F-404C-A3A9-6A4A0EE77476}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CGS", "CGS\CGS.csproj", "{D0A974D3-03A9-4B71-96D6-C0C2197E194D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGallery", "ArtGallery\ArtGallery.csproj", "{9CF86C4F-9A48-4120-B904-A5590D18CA5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{44255A21-CF3F-404C-A3A9-6A4A0EE77476}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44255A21-CF3F-404C-A3A9-6A4A0EE77476}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44255A21-CF3F-404C-A3A9-6A4A0EE77476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0A974D3-03A9-4B71-96D6-C0C2197E194D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A974D3-03A9-4B71-96D6-C0C2197E194D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A974D3-03A9-4B71-96D6-C0C2197E194D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A974D3-03A9-4B71-96D6-C0C2197E194D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF86C4F-9A48-4120-B904-A5590D18CA5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF86C4F-9A48-4120-B904-A5590D18CA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF86C4F-9A48-4120-B904-A5590D18CA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF86C4F-9A48-4120-B904-A5590D18CA5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ﻿
-namespace preview_CGS
+namespace CGS
 {
-    class ArtPiece
+    public class ArtPiece
     {
         private string PieceID;
 
@@ -9,7 +9,7 @@ namespace preview_CGS
 
         private string Year;
 
-        private double Price = 0;
+        private double Price;
 
         private double Estimate = 0;
 
@@ -17,14 +17,16 @@ namespace preview_CGS
 
         private string CuratorId;
 
-        private char Status = 'D';
+        private char Status;
 
-        public ArtPiece(string pPieceID, string pTitle, string pYear, double pPrice, string pArtistID, string pCuratorID)
+        // Step 4 - item 1 / a
+        public ArtPiece(string pPieceID, string pTitle, string pYear, string pArtistID, string pCuratorID)
         {
             this.SetPieceID(pPieceID);
             this.SetTitle(pTitle);
             this.SetYear(pYear);
-            this.SetPrice(pPrice);
+            this.SetPrice(0);
+            this.SetStatus('D');
             this.SetArtistID(pArtistID);
             this.SetCuratorID(pCuratorID);
         }
@@ -68,6 +70,15 @@ namespace preview_CGS
             return this.Price;
         }
 
+        public void SetStatus(char pStatus)
+        {
+            this.Status = pStatus;
+        }
+
+        public char GetStatus()
+        {
+            return this.Status;
+        }
         public void SetArtistID(string pArtistId)
         {
             this.ArtistId = pArtistId;
@@ -88,24 +99,40 @@ namespace preview_CGS
             return this.CuratorId;
         }
 
-        public void ChangeStatus(char pStatus)
+        // Step 4 - item 1 / c
+        public void ChangeStatus()
         {
-            this.Status = pStatus;
+            this.Status = 'S';
         }
 
+        // Step 4 - item 1 / d
         public void PricePaid(double pPrice)
         {
             this.Price = pPrice;
         }
 
-        public double CalculateComm(double pComm)
+        // Step 4 - item 1 / e
+        public double CalculateComm(double pPrice)
         {
-            return pComm;
+            double lucro = pPrice - Estimate;
+            double cal;
+            if (lucro < 0 )
+            {
+                cal = 0;
+            }
+            else
+            {
+                cal = lucro * 0.25;
+            }
+
+            return cal;
         }
 
+        // Step 4 - item 1 / b
         public override string ToString()
         {
-            return PieceID + Title + Year + Price + Estimate + ArtistId + CuratorId + Status; 
+            return string.Format($"{GetPieceID()} {GetTitle()} {GetYear()} {GetPrice()} {GetStatus()} Estimate {GetArtistID()} {GetCuratorID()}");
+            
         }
     }
 
