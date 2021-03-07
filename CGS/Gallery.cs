@@ -32,9 +32,9 @@ namespace CGS
         }
 
         // Step 4 - item 2 / a, b , c
-        public void AddPiece(string pPieceID, string pTitle, string pYear, string pArtistID, string pCuratorID)
+        public void AddPiece(string pPieceID, string pTitle, string pYear, double pEstimate, string pArtistID, string pCuratorID)
         {
-            ArtPiece artpiece = new ArtPiece(pPieceID, pTitle, pYear, pArtistID, pCuratorID);
+            ArtPiece artpiece = new ArtPiece(pPieceID, pTitle, pYear, pEstimate, pArtistID, pCuratorID);
 
             artpiece.SetPieceID(pPieceID);
             artpiece.SetTitle(pTitle);
@@ -65,11 +65,23 @@ namespace CGS
 
         public Boolean SellPiece (string pPieceID, double pPrice)
         {
-            var lista = this.listpieces.Where(a => a.GetPieceID()==pPieceID);
+            var artPiece = this.listpieces.FirstOrDefault(a => a.GetPieceID()==pPieceID);
 
-            ArtPiece artPiece = lista.FirstOrDefault();
             
-            return artPiece.GetStatus() == 'D' ? true : false;
+            if (artPiece.GetStatus() == 'D')
+            {
+                artPiece.ChangeStatus();
+                artPiece.PricePaid(pPrice);
+                Curator curator = listcurators.FirstOrDefault(c => c.GetID() == artPiece.GetCuratorID());
+                curator.SetComm(artPiece.CalculateComm());
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            
         }
     }
 }

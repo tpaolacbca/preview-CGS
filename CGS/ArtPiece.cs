@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace CGS
 {
     public class ArtPiece
@@ -11,7 +13,7 @@ namespace CGS
 
         private double Price;
 
-        private double Estimate = 0;
+        private double Estimate;
 
         private string ArtistId;
 
@@ -20,16 +22,23 @@ namespace CGS
         private char Status;
 
         // Step 4 - item 1 / a
-        public ArtPiece(string pPieceID, string pTitle, string pYear, string pArtistID, string pCuratorID)
+        public ArtPiece(string pPieceID, string pTitle, string pYear,double pEstimate ,string pArtistID, string pCuratorID)
         {
             this.SetPieceID(pPieceID);
             this.SetTitle(pTitle);
             this.SetYear(pYear);
+            this.SetEstimate(pEstimate);
             this.SetPrice(0);
             this.SetStatus('D');
             this.SetArtistID(pArtistID);
             this.SetCuratorID(pCuratorID);
         }
+
+        private void SetEstimate(double pEstimate)
+        {
+            this.Estimate = pEstimate;
+        }
+
         public void SetPieceID(string pPieceID)
         {
             this.PieceID = pPieceID;
@@ -59,12 +68,6 @@ namespace CGS
         {
             return this.Year;
         }
-
-        public void SetPrice(double pPrice)
-        {
-            this.Price = pPrice;
-        }
-
         public double GetPrice()
         {
             return this.Price;
@@ -112,9 +115,9 @@ namespace CGS
         }
 
         // Step 4 - item 1 / e
-        public double CalculateComm(double pPrice)
+        public double CalculateComm()
         {
-            double lucro = pPrice - Estimate;
+            double lucro = Price - Estimate;
             double cal;
             if (lucro < 0 )
             {
@@ -131,8 +134,13 @@ namespace CGS
         // Step 4 - item 1 / b
         public override string ToString()
         {
-            return string.Format($"{GetPieceID()} {GetTitle()} {GetYear()} {GetPrice()} {GetStatus()} Estimate {GetArtistID()} {GetCuratorID()}");
+            return string.Format($"{GetPieceID()} {GetTitle()} {GetYear()} {GetPrice()} {GetStatus()} {GetEstimate()} {GetArtistID()} {GetCuratorID()}");
             
+        }
+
+        private string GetEstimate()
+        {
+            return this.Estimate.ToString();
         }
     }
 
