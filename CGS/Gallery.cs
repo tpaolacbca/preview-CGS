@@ -39,7 +39,7 @@ namespace CGS
             artpiece.SetPieceID(pPieceID);
             artpiece.SetTitle(pTitle);
             artpiece.SetYear(pYear);
-            artpiece.SetPrice(0);
+            artpiece.PricePaid(0);
             artpiece.SetStatus('D');
             artpiece.SetArtistID(pArtistID);
             artpiece.SetCuratorID(pCuratorID);

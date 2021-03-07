@@ -28,7 +28,7 @@ namespace CGS
             this.SetTitle(pTitle);
             this.SetYear(pYear);
             this.SetEstimate(pEstimate);
-            this.SetPrice(0);
+            this.PricePaid(0);
             this.SetStatus('D');
             this.SetArtistID(pArtistID);
             this.SetCuratorID(pCuratorID);
